@@ -8,17 +8,17 @@ dotenv.config({path: '.env.local'})
 const db = drizzle(process.env.DATABASE_URL!)
 
 const categoriesSeedData: (typeof cats.$inferInsert)[] = [
-  {name: 'Salary', type: 'income'},
-  {name: 'Rental Income', type: 'income'},
-  {name: 'Business Income', type: 'income'},
-  {name: 'Investments', type: 'income'},
-  {name: 'Other', type: 'income'},
-  {name: 'Housing', type: 'expense'},
-  {name: 'Transport', type: 'expense'},
-  {name: 'Food & Groceries', type: 'expense'},
-  {name: 'Health', type: 'expense'},
-  {name: 'Entertainment & Leisure', type: 'expense'},
-  {name: 'Other', type: 'expense'}
+  {name: 'Salary', type: 'Income'},
+  {name: 'Rental Income', type: 'Income'},
+  {name: 'Business Income', type: 'Income'},
+  {name: 'Investments', type: 'Income'},
+  {name: 'Other', type: 'Income'},
+  {name: 'Housing', type: 'Expense'},
+  {name: 'Transport', type: 'Expense'},
+  {name: 'Food & Groceries', type: 'Expense'},
+  {name: 'Health', type: 'Expense'},
+  {name: 'Entertainment & Leisure', type: 'Expense'},
+  {name: 'Other', type: 'Expense'}
 ]
 
 

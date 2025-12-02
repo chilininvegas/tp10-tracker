@@ -16,7 +16,7 @@ import {type Category} from '@/types/Category'
 
 // Export schema to be used in NewTransactionForm
 export const transactionFormSchema = z.object({
-  transactionType: z.enum(['income', 'expense']),
+  transactionType: z.enum(['Income', 'Expense']),
   categoryId: z.number().positive('Please select a category'),
   transactionDate: z.date().max(addDays(new Date(), 1), 'Transaction date cannot be in the future'),
   amount: z.number().positive('Amount must be greater than 0'),
@@ -30,7 +30,7 @@ type Props = {
   categories: Category[]
   onSubmit: (data: z.infer<typeof transactionFormSchema>) => Promise<void>
   defaultValues?: {
-    transactionType: 'income' | 'expense'
+    transactionType: 'Income' | 'Expense'
     amount: number
     categoryId: number
     description: string
@@ -46,7 +46,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
       categoryId: 0,
       description: '',
       transactionDate: new Date(),
-      transactionType: 'income',
+      transactionType: 'Income',
       ...defaultValues
     }
   })
@@ -69,7 +69,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
             render={({field}) => {
               return (
                 <FormItem>
-                  <FormLabel>Transaction Type</FormLabel>
+                  <FormLabel>Type</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={newValue => {
@@ -82,8 +82,8 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value='income'>Income</SelectItem>
-                        <SelectItem value='expense'>Expense</SelectItem>
+                        <SelectItem value='Income'>Income</SelectItem>
+                        <SelectItem value='Expense'>Expense</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -98,7 +98,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
             render={({field}) => {
               return (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={value => field.onChange(Number(value))}

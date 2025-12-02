@@ -3,7 +3,7 @@ import {integer, numeric, pgTable, timestamp, varchar} from 'drizzle-orm/pg-core
 export const cats = pgTable('cats', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name', {length: 50}).notNull(),
-  type: varchar({enum: ['income', 'expense']}).notNull()
+  type: varchar({enum: ['Income', 'Expense']}).notNull()
 })
 
 export const xactions = pgTable('xactions', {

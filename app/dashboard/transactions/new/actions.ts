@@ -8,7 +8,7 @@ import {auth} from '@clerk/nextjs/server'
 import {addDays, subYears} from 'date-fns'
 
 const transactionSchema = z.object({
-  transactionType: z.enum(['income', 'expense']),
+  transactionType: z.enum(['Income', 'Expense']),
   categoryId: z.number().positive('Please select a category'),
   transactionDate: z.date()
     .min(subYears(new Date(), 20), 'Transaction date cannot be more than 20 years in the past')
@@ -20,7 +20,7 @@ const transactionSchema = z.object({
 })
 
 export const createTransaction = async (data: {
-  transactionType: 'income' | 'expense'
+  transactionType: 'Income' | 'Expense'
   amount: number
   transactionDate: Date
   description: string
