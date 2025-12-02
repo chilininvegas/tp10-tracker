@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {Poppins} from 'next/font/google'
 import {ChartColumnBigIcon} from 'lucide-react'
 import {ClerkProvider, SignedIn, SignedOut, SignInButton, SignUpButton} from '@clerk/nextjs'
+import {Toaster} from '@/components/ui/sonner'
 import {Button} from '@/components/ui/button'
 import UserDropDown from '@/components/UserDropDown'
 import './globals.css'
@@ -29,11 +30,11 @@ const RootLayout = ({children}: Readonly<{children: React.ReactNode}>) => {
             </Link>
             <div>
               <SignedOut>
-                <div className="flex items-center">
-                  <Button asChild variant="link" className="text-white">
+                <div className='flex items-center'>
+                  <Button asChild variant='link' className='text-white'>
                     <SignInButton />
                   </Button>
-                  <Button asChild variant="link" className="text-white">
+                  <Button asChild variant='link' className='text-white'>
                     <SignUpButton />
                   </Button>
                 </div>
@@ -44,6 +45,7 @@ const RootLayout = ({children}: Readonly<{children: React.ReactNode}>) => {
             </div>
           </nav>
           {children}
+          <Toaster position='top-center' />
         </body>
       </html>
     </ClerkProvider>
