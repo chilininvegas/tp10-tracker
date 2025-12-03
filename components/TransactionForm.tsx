@@ -13,6 +13,7 @@ import {cn} from '@/lib/utils'
 import {CalendarIcon} from 'lucide-react'
 import {addDays, format} from 'date-fns'
 import {type Category} from '@/types/Category'
+import {type Transaction} from '@/types/Transaction'
 
 // Export schema to be used in NewTransactionForm
 export const transactionFormSchema = z.object({
@@ -29,13 +30,7 @@ export const transactionFormSchema = z.object({
 type Props = {
   categories: Category[]
   onSubmit: (data: z.infer<typeof transactionFormSchema>) => Promise<void>
-  defaultValues?: {
-    transactionType: 'Income' | 'Expense'
-    amount: number
-    categoryId: number
-    description: string
-    transactionDate: Date
-  }
+  defaultValues?: Transaction
 }
 
 const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {

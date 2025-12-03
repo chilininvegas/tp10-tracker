@@ -9,13 +9,16 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 const Filters = ({month, year, yearsRange}: {month: number, year: number, yearsRange: number[]}) => {
   const [selectedMoYr, setSelectedMoYr] = useState<{mo: number, yr: number}>({mo: month, yr: year})
 
+  const monthChanged = selectedMoYr.mo !== month
+  const yearChanged = selectedMoYr.yr !== year
+
   return (
     <div className='flex gap-1'>
       <Select
         onValueChange={value => setSelectedMoYr({mo: parseInt(value), yr: selectedMoYr.yr})}
         value={selectedMoYr.mo.toString()}
       >
-        <SelectTrigger>
+        <SelectTrigger className={monthChanged ? 'bg-pink-300 dark:bg-pink-700' : ''}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -30,7 +33,7 @@ const Filters = ({month, year, yearsRange}: {month: number, year: number, yearsR
         onValueChange={value => setSelectedMoYr({mo: selectedMoYr.mo, yr: parseInt(value)})}
         value={selectedMoYr.yr.toString()}
       >
-        <SelectTrigger>
+        <SelectTrigger className={yearChanged ? 'bg-pink-300 dark:bg-pink-700' : ''}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

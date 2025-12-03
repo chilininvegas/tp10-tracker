@@ -14,6 +14,8 @@ import Filters from '@/app/dashboard/transactions/filters'
 import {getTransactionYearsRange} from '@/data/getTransactionYearsRange'
 
 const today = new Date()
+const minYear = today.getFullYear() - 20
+const maxYear = today.getFullYear() + 1
 
 const searchParamsSchema = z.object({
   month: z.coerce
@@ -23,15 +25,17 @@ const searchParamsSchema = z.object({
     .catch(today.getMonth() + 1),
   year: z.coerce
     .number()
-    .min(today.getFullYear() - 20)
-    .max(today.getFullYear() + 1)
-    .catch(today.getFullYear())
+    .optional()
 })
 
 const TransactionsPage = async ({searchParams}: {searchParams: Promise<{month?: string, year?: string}>}) => {
   const searchParamsData = await searchParams
 
-  const {month, year} = searchParamsSchema.parse(searchParamsData)
+  const {month, year: rawYear} = searchParamsSchema.parse(searchParamsData)
+  
+  // Validate year range separately to provide error message
+  const yearOutOfRange = rawYear !== undefined && (rawYear < minYear || rawYear > maxYear)
+  const year = yearOutOfRange || rawYear === undefined ? today.getFullYear() : rawYear
   const selectedDate = new Date(year, month - 1, 1)
 
   const transactions = await getTransactionsByMonth({month, year})
@@ -54,6 +58,16 @@ const TransactionsPage = async ({searchParams}: {searchParams: Promise<{month?: 
         </BreadcrumbList>
       </Breadcrumb>
       
+      {yearOutOfRange && (
+        <div className='w-[60%] mt-4 p-4 bg-destructive/15 border border-destructive/50 rounded-lg text-destructive'>
+          <p className='font-medium'>Year out of range</p>
+          <p className='text-sm'>
+            The requested year ({rawYear}) is outside the allowed range. 
+            Showing transactions for {format(selectedDate, 'MMM yyyy')} instead.
+          </p>
+        </div>
+      )}
+
       <Card className='mt-4'>
         <CardHeader>
           <CardTitle className='flex justify-between'>
