@@ -12,14 +12,14 @@ const Cashflow = async ({ year }: { year: number }) => {
   ])
 
   return (
-    <Card className="mb-5">
+    <Card className='mb-5'>
       <CardHeader>
-        <CardTitle className="flex justify-between">
+        <CardTitle className='flex justify-between'>
           <span>Cashflow</span>
           <CashflowFilter year={year} yearsRange={yearsRange} />
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-[1fr_25%]">
+      <CardContent className='grid grid-cols-[1fr_25%]'>
         <CashflowChart annualCashflow={cashflow} />
       </CardContent>
     </Card>

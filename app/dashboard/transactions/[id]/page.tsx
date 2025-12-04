@@ -25,9 +25,9 @@ const EditTrasactionPage = async ({
   }
 
   return (
-    <Card className="mt-4 max-w-3xl">
+    <Card className='mt-4 max-w-3xl'>
       <CardHeader>
-        <CardTitle className="flex justify-between items-center">
+        <CardTitle className='flex justify-between items-center'>
           <span>Edit Transaction</span>
           <DeleteTransactionDialog
             xactionId={xactionId}

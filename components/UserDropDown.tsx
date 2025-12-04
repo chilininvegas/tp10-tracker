@@ -20,7 +20,7 @@ const UserDropDown = () => {
     >
       <UserButton.MenuItems>
         <UserButton.Action
-          label="Dashboard"
+          label='Dashboard'
           labelIcon={<ChartColumnBig size={16} />}
           onClick={() => router.push('/dashboard')}
         />

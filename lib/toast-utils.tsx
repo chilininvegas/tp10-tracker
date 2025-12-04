@@ -8,15 +8,15 @@ export const showToast = (message: string, type: ToastType = 'info') => {
   const config = {
     success: {
       backgroundColor: 'var(--success)',
-      icon: <CircleCheckIcon className="size-5 text-white" />
+      icon: <CircleCheckIcon className='size-5 text-white' />
     },
     error: {
       backgroundColor: 'var(--destructive)',
-      icon: <OctagonXIcon className="size-5 text-white" />
+      icon: <OctagonXIcon className='size-5 text-white' />
     },
     info: {
       backgroundColor: 'var(--primary)',
-      icon: <InfoIcon className="size-5 text-white" />
+      icon: <InfoIcon className='size-5 text-white' />
     }
   }
 

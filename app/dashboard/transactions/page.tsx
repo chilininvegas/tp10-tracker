@@ -61,12 +61,12 @@ const TransactionsPage = async ({
   const yearsRange = await getTransactionYearsRange()
 
   return (
-    <div className="max-w-7xl mx-auto py-10">
+    <div className='max-w-7xl mx-auto py-10'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href='/dashboard'>Dashboard</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -77,18 +77,18 @@ const TransactionsPage = async ({
       </Breadcrumb>
 
       {yearOutOfRange && (
-        <div className="w-[60%] mt-4 p-4 bg-destructive/15 border border-destructive/50 rounded-lg text-destructive">
-          <p className="font-medium">Year out of range</p>
-          <p className="text-sm">
+        <div className='w-[60%] mt-4 p-4 bg-destructive/15 border border-destructive/50 rounded-lg text-destructive'>
+          <p className='font-medium'>Year out of range</p>
+          <p className='text-sm'>
             The requested year ({rawYear}) is outside the allowed range. Showing
             transactions for {format(selectedDate, 'MMM yyyy')} instead.
           </p>
         </div>
       )}
 
-      <Card className="mt-4">
+      <Card className='mt-4'>
         <CardHeader>
-          <CardTitle className="flex justify-between">
+          <CardTitle className='flex justify-between'>
             <span>{format(selectedDate, 'MMMM yyyy')}&nbsp;Transactions</span>
             <div>
               <Filters month={month} year={year} yearsRange={yearsRange} />
@@ -97,32 +97,32 @@ const TransactionsPage = async ({
         </CardHeader>
         <CardContent>
           <Button asChild>
-            <Link href="/dashboard/transactions/new">New Transaction</Link>
+            <Link href='/dashboard/transactions/new'>New Transaction</Link>
           </Button>
           {!transactions?.length && (
-            <p className="text-center py-10 text-lg text-muted-foreground">
+            <p className='text-center py-10 text-lg text-muted-foreground'>
               No transactions found for this month
             </p>
           )}
           {!!transactions?.length && (
-            <Table className="mt-4">
+            <Table className='mt-4'>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-center">Date</TableHead>
-                  <TableHead className="text-center">Description</TableHead>
-                  <TableHead className="text-center">Type</TableHead>
-                  <TableHead className="text-center">Category</TableHead>
-                  <TableHead className="text-center">Amount</TableHead>
-                  <TableHead className="text-center">Edit</TableHead>
+                  <TableHead className='text-center'>Date</TableHead>
+                  <TableHead className='text-center'>Description</TableHead>
+                  <TableHead className='text-center'>Type</TableHead>
+                  <TableHead className='text-center'>Category</TableHead>
+                  <TableHead className='text-center'>Amount</TableHead>
+                  <TableHead className='text-center'>Edit</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {transactions.map((x) => (
-                  <TableRow key={x.id} className="text-center">
+                  <TableRow key={x.id} className='text-center'>
                     <TableCell>
                       {format(x.transactionDate, 'MMM do, yyyy')}
                     </TableCell>
-                    <TableCell className="capitalize">
+                    <TableCell className='capitalize'>
                       {x.description}
                     </TableCell>
                     <TableCell>
@@ -139,19 +139,19 @@ const TransactionsPage = async ({
                     </TableCell>
                     <TableCell>{x.categoryName}</TableCell>
                     <TableCell>
-                      <div className="w-1/2 mx-auto text-right">
+                      <div className='w-1/2 mx-auto text-right'>
                         ${numeral(x.amount).format('0,0.00')}
                       </div>
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className='text-center'>
                       <Button
                         asChild
-                        variant="outline"
-                        size="icon"
-                        aria-label="Edit transaction"
+                        variant='outline'
+                        size='icon'
+                        aria-label='Edit transaction'
                       >
                         <Link href={`/dashboard/transactions/${x.id}`}>
-                          <PencilIcon className="w-4 h-4" />
+                          <PencilIcon className='w-4 h-4' />
                         </Link>
                       </Button>
                     </TableCell>

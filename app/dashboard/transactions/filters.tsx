@@ -30,7 +30,7 @@ const Filters = ({
   const yearChanged = selectedMoYr.yr !== year
 
   return (
-    <div className="flex gap-1">
+    <div className='flex gap-1'>
       <Select
         onValueChange={(value) =>
           setSelectedMoYr({ mo: parseInt(value), yr: selectedMoYr.yr })

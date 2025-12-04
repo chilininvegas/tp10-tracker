@@ -76,11 +76,11 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <fieldset
           disabled={form.formState.isSubmitting}
-          className="grid grid-cols-2 gap-y-5 gap-x-2 items-start"
+          className='grid grid-cols-2 gap-y-5 gap-x-2 items-start'
         >
           <FormField
             control={form.control}
-            name="transactionType"
+            name='transactionType'
             render={({ field }) => {
               return (
                 <FormItem>
@@ -93,12 +93,12 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
                       }}
                       value={field.value}
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className='w-full'>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Income">Income</SelectItem>
-                        <SelectItem value="Expense">Expense</SelectItem>
+                        <SelectItem value='Income'>Income</SelectItem>
+                        <SelectItem value='Expense'>Expense</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -109,7 +109,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           />
           <FormField
             control={form.control}
-            name="categoryId"
+            name='categoryId'
             render={({ field }) => {
               return (
                 <FormItem>
@@ -119,7 +119,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
                       onValueChange={(value) => field.onChange(Number(value))}
                       value={field.value?.toString() ?? ''}
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className='w-full'>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -138,7 +138,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           />
           <FormField
             control={form.control}
-            name="transactionDate"
+            name='transactionDate'
             render={({ field }) => {
               return (
                 <FormItem>
@@ -153,7 +153,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
                             !field.value && 'text-muted-foreground'
                           )}
                         >
-                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          <CalendarIcon className='mr-2 h-4 w-4' />
                           {field.value ? (
                             format(field.value, 'PPP')
                           ) : (
@@ -161,9 +161,9 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
                           )}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
+                      <PopoverContent className='w-auto p-0'>
                         <Calendar
-                          mode="single"
+                          mode='single'
                           selected={field.value}
                           onSelect={field.onChange}
                           autoFocus={true}
@@ -179,7 +179,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           />
           <FormField
             control={form.control}
-            name="amount"
+            name='amount'
             render={({ field }) => {
               return (
                 <FormItem>
@@ -198,11 +198,11 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
         </fieldset>
         <fieldset
           disabled={form.formState.isSubmitting}
-          className="mt-5 flex flex-col gap-5"
+          className='mt-5 flex flex-col gap-5'
         >
           <FormField
             control={form.control}
-            name="description"
+            name='description'
             render={({ field }) => {
               return (
                 <FormItem>
@@ -215,7 +215,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
               )
             }}
           />
-          <Button type="submit">Submit</Button>
+          <Button type='submit'>Submit</Button>
         </fieldset>
       </form>
     </Form>

@@ -28,22 +28,22 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang='en'>
         <body className={`${poppins.variable} antialiased`}>
-          <nav className="bg-primary p-4 text-white h-20 flex items-center justify-between">
+          <nav className='bg-primary p-4 text-white h-20 flex items-center justify-between'>
             <Link
-              href="/"
-              className="font-bold text-2xl flex gap-1 items-center"
+              href='/'
+              className='font-bold text-2xl flex gap-1 items-center'
             >
-              <ChartColumnBigIcon className="text-lime-500" /> NextCash
+              <ChartColumnBigIcon className='text-lime-500' /> NextCash
             </Link>
             <div>
               <SignedOut>
-                <div className="flex items-center">
-                  <Button asChild variant="link" className="text-white">
+                <div className='flex items-center'>
+                  <Button asChild variant='link' className='text-white'>
                     <SignInButton />
                   </Button>
-                  <Button asChild variant="link" className="text-white">
+                  <Button asChild variant='link' className='text-white'>
                     <SignUpButton />
                   </Button>
                 </div>
@@ -54,7 +54,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             </div>
           </nav>
           {children}
-          <Toaster position="top-center" />
+          <Toaster position='top-center' />
         </body>
       </html>
     </ClerkProvider>

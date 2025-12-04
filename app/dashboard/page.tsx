@@ -17,8 +17,8 @@ const DashboardPage = async ({
   const year = isNaN(cfyear) ? today.getFullYear() : cfyear
 
   return (
-    <div className="max-w-7xl mx-auto py-5">
-      <h1 className="text-4xl font-semibold pb-5">Dashboard</h1>
+    <div className='max-w-7xl mx-auto py-5'>
+      <h1 className='text-4xl font-semibold pb-5'>Dashboard</h1>
       <Cashflow year={year} />
       <RecentTransactions />
     </div>

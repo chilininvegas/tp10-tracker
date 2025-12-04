@@ -42,18 +42,18 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   const expense = payload.find((p) => p.dataKey === 'totalExpense')?.value || 0
 
   return (
-    <div className="bg-yellow-100 p-3 border border-gray-400 rounded-lg shadow-lg">
-      <p className="font-semibold mb-2">{monthName}</p>
-      <div className="space-y-1">
-        <p className="text-sm">
-          <span className="text-lime-500 font-medium">Income: </span>
-          <span className="font-semibold">
+    <div className='bg-yellow-100 p-3 border border-gray-400 rounded-lg shadow-lg'>
+      <p className='font-semibold mb-2'>{monthName}</p>
+      <div className='space-y-1'>
+        <p className='text-sm'>
+          <span className='text-lime-500 font-medium'>Income: </span>
+          <span className='font-semibold'>
             {numeral(income).format('$0,0.00')}
           </span>
         </p>
-        <p className="text-sm">
-          <span className="text-orange-500 font-medium">Expense: </span>
-          <span className="font-semibold">
+        <p className='text-sm'>
+          <span className='text-orange-500 font-medium'>Expense: </span>
+          <span className='font-semibold'>
             {numeral(expense).format('$0,0.00')}
           </span>
         </p>
@@ -92,19 +92,19 @@ const CashflowChart = ({
             label: 'Expenses'
           }
         }}
-        className="w-full h-[300px]"
+        className='w-full h-[300px]'
       >
         <BarChart data={annualCashflow}>
-          <CartesianGrid vertical={false} stroke="#cbd5e1" />
+          <CartesianGrid vertical={false} stroke='#cbd5e1' />
           {/* Year 2025 passed to Date() is not important; only the month is used */}
           <XAxis
-            dataKey="month"
+            dataKey='month'
             tickFormatter={(value: number) =>
               format(new Date(2025, value - 1, 1), 'MMM')
             }
           />
           <YAxis
-            dataKey="totalIncome"
+            dataKey='totalIncome'
             tickFormatter={(value) => numeral(value).format('0,0')}
           />
           <Tooltip
@@ -112,45 +112,45 @@ const CashflowChart = ({
             cursor={{ fill: 'rgba(0, 0, 0, 0.05)' }}
           />
           <Legend
-            verticalAlign="top"
-            align="right"
+            verticalAlign='top'
+            align='right'
             wrapperStyle={{ paddingBottom: '20px' }}
-            iconType="circle"
-            formatter={(value) => <span className="text-primary">{value}</span>}
+            iconType='circle'
+            formatter={(value) => <span className='text-primary'>{value}</span>}
           />
           <Bar
-            dataKey="totalIncome"
-            name="Income"
+            dataKey='totalIncome'
+            name='Income'
             radius={4}
-            fill="var(--color-income)"
+            fill='var(--color-income)'
           />
           <Bar
-            dataKey="totalExpense"
-            name="Expense"
+            dataKey='totalExpense'
+            name='Expense'
             radius={4}
-            fill="var(--color-expense)"
+            fill='var(--color-expense)'
           />
         </BarChart>
       </ChartContainer>
-      <div className="border-l pl-10 flex flex-col gap-4 justify-center">
+      <div className='border-l pl-10 flex flex-col gap-4 justify-center'>
         <div>
-          <span className="text-muted-foreground font-bold text-sm">
+          <span className='text-muted-foreground font-bold text-sm'>
             Income
           </span>
-          <h2 className="text-3xl">${numeral(totalIncome).format('0,0.00')}</h2>
+          <h2 className='text-3xl'>${numeral(totalIncome).format('0,0.00')}</h2>
         </div>
         <hr />
         <div>
-          <span className="text-muted-foreground font-bold text-sm">
+          <span className='text-muted-foreground font-bold text-sm'>
             Expense
           </span>
-          <h2 className="text-3xl">
+          <h2 className='text-3xl'>
             ${numeral(totalExpense).format('0,0.00')}
           </h2>
         </div>
         <hr />
         <div>
-          <span className="text-muted-foreground font-bold text-sm">
+          <span className='text-muted-foreground font-bold text-sm'>
             Balance
           </span>
           <h2
