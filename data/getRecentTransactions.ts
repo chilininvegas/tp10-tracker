@@ -1,24 +1,16 @@
 import 'server-only'
+
+import { desc, eq } from 'drizzle-orm'
 import { auth } from '@clerk/nextjs/server'
 import { db } from '@/db'
 import { cats, xactions } from '@/db/schema'
-import { and, eq, gte, lte, desc } from 'drizzle-orm'
 
-export const getTransactionsByMonth = async ({
-  month,
-  year
-}: {
-  month: number
-  year: number
-}) => {
+export const getRecentTransactions = async () => {
   const { userId } = await auth()
 
   if (!userId) {
-    return null
+    return []
   }
-
-  const firstDate = new Date(year, month - 1, 1) // Month is 0-indexed, so we subtract 1
-  const lastDate = new Date(year, month, 0) // '0' means last day of previous month
 
   const transactions = await db
     .select({
@@ -30,14 +22,9 @@ export const getTransactionsByMonth = async ({
       categoryType: cats.type
     })
     .from(xactions)
-    .where(
-      and(
-        eq(xactions.userId, userId),
-        gte(xactions.transactionDate, firstDate),
-        lte(xactions.transactionDate, lastDate)
-      )
-    )
+    .where(eq(xactions.userId, userId))
     .orderBy(desc(xactions.transactionDate))
+    .limit(5)
     .leftJoin(cats, eq(xactions.categoryId, cats.id))
 
   return transactions

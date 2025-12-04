@@ -1,13 +1,15 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
-import {z} from 'zod'
-import {showToast} from '@/lib/toast-utils'
-import TransactionForm, {transactionFormSchema} from '@/components/TransactionForm'
-import {type Category} from '@/types/Category'
-import {createTransaction} from '@/app/dashboard/transactions/new/actions'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
+import { showToast } from '@/lib/toast-utils'
+import TransactionForm, {
+  transactionFormSchema
+} from '@/components/TransactionForm'
+import { type Category } from '@/types/Category'
+import { createTransaction } from '@/app/dashboard/transactions/new/actions'
 
-const NewTransactionForm = ({categories}: {categories: Category[]}) => {
+const NewTransactionForm = ({ categories }: { categories: Category[] }) => {
   const router = useRouter()
 
   const handleSubmit = async (data: z.infer<typeof transactionFormSchema>) => {
@@ -23,7 +25,7 @@ const NewTransactionForm = ({categories}: {categories: Category[]}) => {
       showToast(result.message, 'error')
       return
     }
-    
+
     showToast('Transaction created successfully', 'success')
 
     router.push(

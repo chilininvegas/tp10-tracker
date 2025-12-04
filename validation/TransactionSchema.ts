@@ -1,5 +1,5 @@
-import {z} from 'zod'
-import {addDays, subYears} from 'date-fns'
+import { z } from 'zod'
+import { addDays, subYears } from 'date-fns'
 
 export const transactionSchema = z.object({
   amount: z.number().positive('Amount must be greater than 0'),
@@ -11,5 +11,5 @@ export const transactionSchema = z.object({
   transactionDate: z.coerce
     .date()
     .min(subYears(new Date(), 100))
-    .max(addDays(new Date(), 1)),
+    .max(addDays(new Date(), 1))
 })

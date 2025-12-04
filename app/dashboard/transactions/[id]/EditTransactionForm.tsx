@@ -1,15 +1,22 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
-import {z} from 'zod'
-import {showToast} from '@/lib/toast-utils'
-import TransactionForm, {transactionFormSchema} from '@/components/TransactionForm'
-import {type Category} from '@/types/Category'
-import {type Transaction} from '@/types/Transaction'
-import {updateTransaction} from './actions'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
+import { showToast } from '@/lib/toast-utils'
+import TransactionForm, {
+  transactionFormSchema
+} from '@/components/TransactionForm'
+import { type Category } from '@/types/Category'
+import { type Transaction } from '@/types/Transaction'
+import { updateTransaction } from './actions'
 
-const EditTransactionForm = (
-  {categories, transaction}: {categories: Category[], transaction: Transaction}) => {
+const EditTransactionForm = ({
+  categories,
+  transaction
+}: {
+  categories: Category[]
+  transaction: Transaction
+}) => {
   const router = useRouter()
 
   const handleSubmit = async (data: z.infer<typeof transactionFormSchema>) => {
@@ -22,7 +29,7 @@ const EditTransactionForm = (
       showToast(result.message, 'error')
       return
     }
-    
+
     showToast('Transaction updated successfully', 'success')
 
     router.push(
@@ -30,11 +37,13 @@ const EditTransactionForm = (
     )
   }
 
-  return <TransactionForm
-    onSubmit={handleSubmit}
-    categories={categories}
-    defaultValues={transaction}
-  />
+  return (
+    <TransactionForm
+      onSubmit={handleSubmit}
+      categories={categories}
+      defaultValues={transaction}
+    />
+  )
 }
 
 export default EditTransactionForm

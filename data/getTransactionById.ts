@@ -1,13 +1,13 @@
 import 'server-only'
 
-import {auth} from '@clerk/nextjs/server'
-import {and, eq} from 'drizzle-orm'
-import {db} from '@/db'
-import {xactions, cats} from '@/db/schema'
-import {type Transaction} from '@/types/Transaction'
+import { auth } from '@clerk/nextjs/server'
+import { and, eq } from 'drizzle-orm'
+import { db } from '@/db'
+import { xactions, cats } from '@/db/schema'
+import { type Transaction } from '@/types/Transaction'
 
 const getTransactionById = async (id: number): Promise<Transaction | null> => {
-  const {userId} = await auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return null
@@ -37,4 +37,4 @@ const getTransactionById = async (id: number): Promise<Transaction | null> => {
   }
 }
 
-export {getTransactionById}
+export { getTransactionById }

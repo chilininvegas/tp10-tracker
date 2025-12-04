@@ -1,6 +1,6 @@
 // From Cursor (model: Claude Sonnet 4.5 "thinking")
-import {toast} from 'sonner'
-import {CircleCheckIcon, OctagonXIcon, InfoIcon} from 'lucide-react'
+import { toast } from 'sonner'
+import { CircleCheckIcon, OctagonXIcon, InfoIcon } from 'lucide-react'
 
 type ToastType = 'success' | 'error' | 'info'
 
@@ -20,7 +20,7 @@ export const showToast = (message: string, type: ToastType = 'info') => {
     }
   }
 
-  const {backgroundColor, icon} = config[type]
+  const { backgroundColor, icon } = config[type]
 
   toast(message, {
     style: {

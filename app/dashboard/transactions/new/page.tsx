@@ -1,31 +1,32 @@
 import Link from 'next/link'
-import {getCategories} from '@/data/getCategories'
+import { getCategories } from '@/data/getCategories'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator} from '@/components/ui/breadcrumb'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import NewTransactionForm from '@/app/dashboard/transactions/new/NewTransactionForm'
 
 const NewTransactionPage = async () => {
   const categories = await getCategories()
 
   return (
-    <div className='max-w-7xl mx-auto py-10'>
+    <div className="max-w-7xl mx-auto py-10">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href='/dashboard'>Dashboard</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href='/dashboard/transactions'>Transactions</Link>
+              <Link href="/dashboard/transactions">Transactions</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -35,7 +36,7 @@ const NewTransactionPage = async () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <Card className='mt-4 max-w-3xl'>
+      <Card className="mt-4 max-w-3xl">
         <CardHeader>
           <CardTitle>New Transaction</CardTitle>
         </CardHeader>

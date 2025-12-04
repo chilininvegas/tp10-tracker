@@ -1,27 +1,47 @@
 'use client'
 
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
-import {zodResolver} from '@hookform/resolvers/zod'
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form'
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
-import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
-import {Calendar} from '@/components/ui/calendar'
-import {Input} from '@/components/ui/input'
-import {Button} from '@/components/ui/button'
-import {cn} from '@/lib/utils'
-import {CalendarIcon} from 'lucide-react'
-import {addDays, format} from 'date-fns'
-import {type Category} from '@/types/Category'
-import {type Transaction} from '@/types/Transaction'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover'
+import { Calendar } from '@/components/ui/calendar'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { CalendarIcon } from 'lucide-react'
+import { addDays, format } from 'date-fns'
+import { type Category } from '@/types/Category'
+import { type Transaction } from '@/types/Transaction'
 
 // Export schema to be used in NewTransactionForm
 export const transactionFormSchema = z.object({
   transactionType: z.enum(['Income', 'Expense']),
   categoryId: z.number().positive('Please select a category'),
-  transactionDate: z.date().max(addDays(new Date(), 1), 'Transaction date cannot be in the future'),
+  transactionDate: z
+    .date()
+    .max(addDays(new Date(), 1), 'Transaction date cannot be in the future'),
   amount: z.number().positive('Amount must be greater than 0'),
-  description: z.string()
+  description: z
+    .string()
     .min(3, 'Description must contain at least 3 characters')
     .max(300, 'Description must contain a maximum of 300 characters')
 })
@@ -33,7 +53,7 @@ type Props = {
   defaultValues?: Transaction
 }
 
-const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
+const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
   const form = useForm<z.infer<typeof transactionFormSchema>>({
     resolver: zodResolver(transactionFormSchema),
     defaultValues: {
@@ -48,7 +68,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
 
   const transactionType = form.watch('transactionType')
   const filteredCategories = categories.filter(
-    category => category.type === transactionType
+    (category) => category.type === transactionType
   )
 
   return (
@@ -56,29 +76,29 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <fieldset
           disabled={form.formState.isSubmitting}
-          className='grid grid-cols-2 gap-y-5 gap-x-2 items-start'
+          className="grid grid-cols-2 gap-y-5 gap-x-2 items-start"
         >
           <FormField
             control={form.control}
-            name='transactionType'
-            render={({field}) => {
+            name="transactionType"
+            render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Type</FormLabel>
                   <FormControl>
                     <Select
-                      onValueChange={newValue => {
+                      onValueChange={(newValue) => {
                         field.onChange(newValue)
                         form.setValue('categoryId', 0)
                       }}
                       value={field.value}
                     >
-                      <SelectTrigger className='w-full'>
+                      <SelectTrigger className="w-full">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value='Income'>Income</SelectItem>
-                        <SelectItem value='Expense'>Expense</SelectItem>
+                        <SelectItem value="Income">Income</SelectItem>
+                        <SelectItem value="Expense">Expense</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -89,21 +109,21 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
           />
           <FormField
             control={form.control}
-            name='categoryId'
-            render={({field}) => {
+            name="categoryId"
+            render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Select
-                      onValueChange={value => field.onChange(Number(value))}
+                      onValueChange={(value) => field.onChange(Number(value))}
                       value={field.value?.toString() ?? ''}
                     >
-                      <SelectTrigger className='w-full'>
+                      <SelectTrigger className="w-full">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {filteredCategories.map(cat => (
+                        {filteredCategories.map((cat) => (
                           <SelectItem key={cat.id} value={cat.id.toString()}>
                             {cat.name}
                           </SelectItem>
@@ -118,8 +138,8 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
           />
           <FormField
             control={form.control}
-            name='transactionDate'
-            render={({field}) => {
+            name="transactionDate"
+            render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Transaction Date</FormLabel>
@@ -133,7 +153,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
                             !field.value && 'text-muted-foreground'
                           )}
                         >
-                          <CalendarIcon className='mr-2 h-4 w-4' />
+                          <CalendarIcon className="mr-2 h-4 w-4" />
                           {field.value ? (
                             format(field.value, 'PPP')
                           ) : (
@@ -141,13 +161,13 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
                           )}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className='w-auto p-0'>
+                      <PopoverContent className="w-auto p-0">
                         <Calendar
-                          mode='single'
+                          mode="single"
                           selected={field.value}
                           onSelect={field.onChange}
                           autoFocus={true}
-                          disabled={{after: new Date()}}
+                          disabled={{ after: new Date() }}
                         />
                       </PopoverContent>
                     </Popover>
@@ -159,15 +179,16 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
           />
           <FormField
             control={form.control}
-            name='amount'
-            render={({field}) => {
+            name="amount"
+            render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      onChange={e => field.onChange(Number(e.target.value))} />
+                      onChange={(e) => field.onChange(Number(e.target.value))}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -177,12 +198,12 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
         </fieldset>
         <fieldset
           disabled={form.formState.isSubmitting}
-          className='mt-5 flex flex-col gap-5'
+          className="mt-5 flex flex-col gap-5"
         >
           <FormField
             control={form.control}
-            name='description'
-            render={({field}) => {
+            name="description"
+            render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Description</FormLabel>
@@ -194,7 +215,7 @@ const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
               )
             }}
           />
-          <Button type='submit'>Submit</Button>
+          <Button type="submit">Submit</Button>
         </fieldset>
       </form>
     </Form>

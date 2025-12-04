@@ -1,21 +1,27 @@
-import {Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage,
-  BreadcrumbSeparator, BreadcrumbLink} from "@/components/ui/breadcrumb"
-import Link from "next/link"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbLink
+} from '@/components/ui/breadcrumb'
+import Link from 'next/link'
 
-const Layout = ({children}: {children: React.ReactNode}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='max-w-7xl mx-auto py-10'>
+    <div className="max-w-7xl mx-auto py-10">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href='/dashboard'>Dashboard</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href='/dashboard/transactions'>Transactions</Link>
+              <Link href="/dashboard/transactions">Transactions</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
