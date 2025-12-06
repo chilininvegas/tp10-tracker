@@ -1,16 +1,16 @@
-import { notFound } from 'next/navigation'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { getCategories } from '@/data/getCategories'
+import {notFound} from 'next/navigation'
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
+import {getCategories} from '@/data/getCategories'
 import EditTransactionForm from '@/app/dashboard/transactions/[id]/EditTransactionForm'
-import { getTransactionById } from '@/data/getTransactionById'
+import {getTransactionById} from '@/data/getTransactionById'
 import DeleteTransactionDialog from './DeleteTransactionDialog'
 
 const EditTrasactionPage = async ({
   params
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{id: string}>
 }) => {
-  const { id } = await params
+  const {id} = await params
 
   const xactionId = Number(id)
   if (isNaN(xactionId)) {

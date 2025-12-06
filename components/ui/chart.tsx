@@ -3,18 +3,18 @@
 import * as React from 'react'
 import * as RechartsPrimitive from 'recharts'
 
-import { cn } from '@/lib/utils'
+import {cn} from '@/lib/utils'
 
 // Format: { THEME_NAME: CSS_SELECTOR }
-const THEMES = { light: '', dark: '.dark' } as const
+const THEMES = {light: '', dark: '.dark'} as const
 
 export type ChartConfig = {
   [k in string]: {
     label?: React.ReactNode
     icon?: React.ComponentType
   } & (
-    | { color?: string; theme?: never }
-    | { color?: never; theme: Record<keyof typeof THEMES, string> }
+    | {color?: string; theme?: never}
+    | {color?: never; theme: Record<keyof typeof THEMES, string>}
   )
 }
 
@@ -50,7 +50,7 @@ function ChartContainer({
   const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`
 
   return (
-    <ChartContext.Provider value={{ config }}>
+    <ChartContext.Provider value={{config}}>
       <div
         data-slot='chart'
         data-chart={chartId}
@@ -69,7 +69,7 @@ function ChartContainer({
   )
 }
 
-const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
+const ChartStyle = ({id, config}: {id: string; config: ChartConfig}) => {
   const colorConfig = Object.entries(config).filter(
     ([, config]) => config.theme || config.color
   )
@@ -126,7 +126,7 @@ function ChartTooltipContent({
     nameKey?: string
     labelKey?: string
   }) {
-  const { config } = useChart()
+  const {config} = useChart()
 
   const tooltipLabel = React.useMemo(() => {
     if (hideLabel || !payload?.length) {
@@ -263,7 +263,7 @@ function ChartLegendContent({
     hideIcon?: boolean
     nameKey?: string
   }) {
-  const { config } = useChart()
+  const {config} = useChart()
 
   if (!payload?.length) {
     return null

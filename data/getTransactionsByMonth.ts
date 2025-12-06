@@ -1,8 +1,8 @@
 import 'server-only'
-import { auth } from '@clerk/nextjs/server'
-import { db } from '@/db'
-import { cats, xactions } from '@/db/schema'
-import { and, eq, gte, lte, desc } from 'drizzle-orm'
+import {auth} from '@clerk/nextjs/server'
+import {db} from '@/db'
+import {cats, xactions} from '@/db/schema'
+import {and, eq, gte, lte, desc} from 'drizzle-orm'
 
 export const getTransactionsByMonth = async ({
   month,
@@ -11,7 +11,7 @@ export const getTransactionsByMonth = async ({
   month: number
   year: number
 }) => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return null

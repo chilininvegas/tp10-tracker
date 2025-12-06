@@ -1,7 +1,7 @@
 // Dropdown filter for cashflow year; used in Cashflow.tsx component
 'use client'
 
-import { useRouter } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 import {
   Select,
   SelectContent,
@@ -15,7 +15,7 @@ type Props = {
   yearsRange: number[]
 }
 
-const CashflowFilter = ({ year, yearsRange }: Props) => {
+const CashflowFilter = ({year, yearsRange}: Props) => {
   const router = useRouter()
 
   return (

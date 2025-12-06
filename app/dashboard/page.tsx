@@ -5,7 +5,7 @@ import Cashflow from './transactions/Cashflow'
 const DashboardPage = async ({
   searchParams
 }: {
-  searchParams: Promise<{ cfyear?: string }>
+  searchParams: Promise<{cfyear?: string}>
 }) => {
   const searchParamsData = await searchParams
   const today = new Date() // Default year is current year

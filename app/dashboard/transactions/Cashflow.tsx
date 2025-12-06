@@ -1,11 +1,11 @@
 // Upper section of Dashboard.tsx showing cashflow for the selected year
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { getAnnualCashflow } from '@/data/getAnnualCashflow'
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
+import {getAnnualCashflow} from '@/data/getAnnualCashflow'
 import CashflowFilter from './CashflowFilter'
-import { getTransactionYearsRange } from '@/data/getTransactionYearsRange'
+import {getTransactionYearsRange} from '@/data/getTransactionYearsRange'
 import CashflowChart from './CashflowChart'
 
-const Cashflow = async ({ year }: { year: number }) => {
+const Cashflow = async ({year}: {year: number}) => {
   const [cashflow, yearsRange] = await Promise.all([
     getAnnualCashflow(year),
     getTransactionYearsRange()

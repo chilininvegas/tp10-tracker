@@ -1,8 +1,8 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
 import {
   Form,
   FormControl,
@@ -18,19 +18,15 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover'
-import { Calendar } from '@/components/ui/calendar'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { CalendarIcon } from 'lucide-react'
-import { addDays, format } from 'date-fns'
-import { type Category } from '@/types/Category'
-import { type Transaction } from '@/types/Transaction'
+import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
+import {Calendar} from '@/components/ui/calendar'
+import {Input} from '@/components/ui/input'
+import {Button} from '@/components/ui/button'
+import {cn} from '@/lib/utils'
+import {CalendarIcon} from 'lucide-react'
+import {addDays, format} from 'date-fns'
+import {type Category} from '@/types/Category'
+import {type Transaction} from '@/types/Transaction'
 
 // Export schema to be used in NewTransactionForm
 export const transactionFormSchema = z.object({
@@ -53,7 +49,7 @@ type Props = {
   defaultValues?: Transaction
 }
 
-const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
+const TransactionForm = ({categories, onSubmit, defaultValues}: Props) => {
   const form = useForm<z.infer<typeof transactionFormSchema>>({
     resolver: zodResolver(transactionFormSchema),
     defaultValues: {
@@ -81,7 +77,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           <FormField
             control={form.control}
             name='transactionType'
-            render={({ field }) => {
+            render={({field}) => {
               return (
                 <FormItem>
                   <FormLabel>Type</FormLabel>
@@ -110,7 +106,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           <FormField
             control={form.control}
             name='categoryId'
-            render={({ field }) => {
+            render={({field}) => {
               return (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
@@ -139,7 +135,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           <FormField
             control={form.control}
             name='transactionDate'
-            render={({ field }) => {
+            render={({field}) => {
               return (
                 <FormItem>
                   <FormLabel>Transaction Date</FormLabel>
@@ -167,7 +163,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
                           selected={field.value}
                           onSelect={field.onChange}
                           autoFocus={true}
-                          disabled={{ after: new Date() }}
+                          disabled={{after: new Date()}}
                         />
                       </PopoverContent>
                     </Popover>
@@ -180,7 +176,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           <FormField
             control={form.control}
             name='amount'
-            render={({ field }) => {
+            render={({field}) => {
               return (
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
@@ -203,7 +199,7 @@ const TransactionForm = ({ categories, onSubmit, defaultValues }: Props) => {
           <FormField
             control={form.control}
             name='description'
-            render={({ field }) => {
+            render={({field}) => {
               return (
                 <FormItem>
                   <FormLabel>Description</FormLabel>

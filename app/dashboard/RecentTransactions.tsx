@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
 import {
   Table,
   TableHeader,
@@ -8,12 +8,12 @@ import {
   TableCell,
   TableHead
 } from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { format } from 'date-fns'
+import {Badge} from '@/components/ui/badge'
+import {format} from 'date-fns'
 import numeral from 'numeral'
-import { Button } from '@/components/ui/button'
-import { getRecentTransactions } from '@/data/getRecentTransactions'
-import { cn } from '@/lib/utils'
+import {Button} from '@/components/ui/button'
+import {getRecentTransactions} from '@/data/getRecentTransactions'
+import {cn} from '@/lib/utils'
 
 const RecentTransactions = async () => {
   const transactions = await getRecentTransactions()

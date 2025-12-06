@@ -1,11 +1,11 @@
 'use server'
-import { eq, asc } from 'drizzle-orm'
-import { auth } from '@clerk/nextjs/server'
-import { db } from '@/db'
-import { xactions } from '@/db/schema'
+import {eq, asc} from 'drizzle-orm'
+import {auth} from '@clerk/nextjs/server'
+import {db} from '@/db'
+import {xactions} from '@/db/schema'
 
 export const getTransactionYearsRange = async () => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return []
@@ -24,7 +24,7 @@ export const getTransactionYearsRange = async () => {
     ? new Date(earliest.transactionDate).getFullYear()
     : currentYear
 
-  const years = Array.from({ length: currentYear - earliestYear + 1 }).map(
+  const years = Array.from({length: currentYear - earliestYear + 1}).map(
     (_, i) => currentYear - i
   )
 

@@ -1,14 +1,14 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { z } from 'zod'
-import { showToast } from '@/lib/toast-utils'
+import {useRouter} from 'next/navigation'
+import {z} from 'zod'
+import {showToast} from '@/lib/toast-utils'
 import TransactionForm, {
   transactionFormSchema
 } from '@/components/TransactionForm'
-import { type Category } from '@/types/Category'
-import { type Transaction } from '@/types/Transaction'
-import { updateTransaction } from './actions'
+import {type Category} from '@/types/Category'
+import {type Transaction} from '@/types/Transaction'
+import {updateTransaction} from './actions'
 
 const EditTransactionForm = ({
   categories,

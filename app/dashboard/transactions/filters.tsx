@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
-import { format } from 'date-fns'
-import { Button } from '@/components/ui/button'
+import {format} from 'date-fns'
+import {Button} from '@/components/ui/button'
 import {
   Select,
   SelectContent,
@@ -21,7 +21,7 @@ const Filters = ({
   year: number
   yearsRange: number[]
 }) => {
-  const [selectedMoYr, setSelectedMoYr] = useState<{ mo: number; yr: number }>({
+  const [selectedMoYr, setSelectedMoYr] = useState<{mo: number; yr: number}>({
     mo: month,
     yr: year
   })
@@ -33,7 +33,7 @@ const Filters = ({
     <div className='flex gap-1'>
       <Select
         onValueChange={(value) =>
-          setSelectedMoYr({ mo: parseInt(value), yr: selectedMoYr.yr })
+          setSelectedMoYr({mo: parseInt(value), yr: selectedMoYr.yr})
         }
         value={selectedMoYr.mo.toString()}
       >
@@ -43,7 +43,7 @@ const Filters = ({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {Array.from({ length: 12 }, (_, i) => (
+          {Array.from({length: 12}, (_, i) => (
             <SelectItem key={i} value={`${i + 1}`}>
               {format(new Date(selectedMoYr.yr, i, 1), 'MMM')}
             </SelectItem>
@@ -52,7 +52,7 @@ const Filters = ({
       </Select>
       <Select
         onValueChange={(value) =>
-          setSelectedMoYr({ mo: selectedMoYr.mo, yr: parseInt(value) })
+          setSelectedMoYr({mo: selectedMoYr.mo, yr: parseInt(value)})
         }
         value={selectedMoYr.yr.toString()}
       >

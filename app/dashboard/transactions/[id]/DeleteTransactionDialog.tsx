@@ -1,8 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { format } from 'date-fns'
-import { Trash2Icon } from 'lucide-react'
+import {useRouter} from 'next/navigation'
+import {format} from 'date-fns'
+import {Trash2Icon} from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -13,9 +13,9 @@ import {
   AlertDialogFooter,
   AlertDialogCancel
 } from '@/components/ui/alert-dialog'
-import { Button } from '@/components/ui/button'
-import { deleteTransaction } from './actions'
-import { showToast } from '@/lib/toast-utils'
+import {Button} from '@/components/ui/button'
+import {deleteTransaction} from './actions'
+import {showToast} from '@/lib/toast-utils'
 
 const DeleteTransactionDialog = ({
   xactionId,

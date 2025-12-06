@@ -1,11 +1,11 @@
 'use server'
 
-import { auth } from '@clerk/nextjs/server'
-import { transactionSchema } from '@/validation/TransactionSchema'
-import { z } from 'zod'
-import { db } from '@/db'
-import { eq, and } from 'drizzle-orm'
-import { xactions } from '@/db/schema'
+import {auth} from '@clerk/nextjs/server'
+import {transactionSchema} from '@/validation/TransactionSchema'
+import {z} from 'zod'
+import {db} from '@/db'
+import {eq, and} from 'drizzle-orm'
+import {xactions} from '@/db/schema'
 
 const updateTransactionSchema = transactionSchema.and(
   z.object({
@@ -16,7 +16,7 @@ const updateTransactionSchema = transactionSchema.and(
 export const updateTransaction = async (
   data: z.infer<typeof updateTransactionSchema>
 ) => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return {
@@ -34,7 +34,7 @@ export const updateTransaction = async (
     }
   }
 
-  const { id, ...updateData } = validation.data
+  const {id, ...updateData} = validation.data
 
   await db
     .update(xactions)
@@ -52,7 +52,7 @@ export const updateTransaction = async (
 }
 
 export const deleteTransaction = async (xactionId: number) => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return {

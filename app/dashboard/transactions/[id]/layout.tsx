@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/breadcrumb'
 import Link from 'next/link'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({children}: {children: React.ReactNode}) => {
   return (
     <div className='max-w-7xl mx-auto py-10'>
       <Breadcrumb>

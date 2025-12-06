@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { z } from 'zod'
-import { Badge } from '@/components/ui/badge'
-import { format } from 'date-fns'
+import {z} from 'zod'
+import {Badge} from '@/components/ui/badge'
+import {format} from 'date-fns'
 import numeral from 'numeral'
-import { PencilIcon } from 'lucide-react'
+import {PencilIcon} from 'lucide-react'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,8 +12,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
+import {Button} from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -22,10 +22,10 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
-import { getTransactionsByMonth } from '@/data/getTransactionsByMonth'
-import { cn } from '@/lib/utils'
+import {getTransactionsByMonth} from '@/data/getTransactionsByMonth'
+import {cn} from '@/lib/utils'
 import Filters from '@/app/dashboard/transactions/filters'
-import { getTransactionYearsRange } from '@/data/getTransactionYearsRange'
+import {getTransactionYearsRange} from '@/data/getTransactionYearsRange'
 
 const today = new Date()
 const minYear = today.getFullYear() - 20
@@ -43,11 +43,11 @@ const searchParamsSchema = z.object({
 const TransactionsPage = async ({
   searchParams
 }: {
-  searchParams: Promise<{ month?: string; year?: string }>
+  searchParams: Promise<{month?: string; year?: string}>
 }) => {
   const searchParamsData = await searchParams
 
-  const { month, year: rawYear } = searchParamsSchema.parse(searchParamsData)
+  const {month, year: rawYear} = searchParamsSchema.parse(searchParamsData)
 
   // Validate year range separately to provide error message
   const yearOutOfRange =
@@ -56,7 +56,7 @@ const TransactionsPage = async ({
     yearOutOfRange || rawYear === undefined ? today.getFullYear() : rawYear
   const selectedDate = new Date(year, month - 1, 1)
 
-  const transactions = await getTransactionsByMonth({ month, year })
+  const transactions = await getTransactionsByMonth({month, year})
 
   const yearsRange = await getTransactionYearsRange()
 

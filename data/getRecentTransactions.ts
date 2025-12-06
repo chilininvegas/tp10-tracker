@@ -1,12 +1,12 @@
 import 'server-only'
 
-import { desc, eq } from 'drizzle-orm'
-import { auth } from '@clerk/nextjs/server'
-import { db } from '@/db'
-import { cats, xactions } from '@/db/schema'
+import {desc, eq} from 'drizzle-orm'
+import {auth} from '@clerk/nextjs/server'
+import {db} from '@/db'
+import {cats, xactions} from '@/db/schema'
 
 export const getRecentTransactions = async () => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return []

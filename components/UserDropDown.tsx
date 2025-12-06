@@ -1,8 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { UserButton } from '@clerk/nextjs'
-import { ChartColumnBig } from 'lucide-react'
+import {useRouter} from 'next/navigation'
+import {UserButton} from '@clerk/nextjs'
+import {ChartColumnBig} from 'lucide-react'
 
 const UserDropDown = () => {
   const router = useRouter()

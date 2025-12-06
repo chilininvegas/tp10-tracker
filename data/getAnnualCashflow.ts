@@ -1,12 +1,12 @@
 import 'server-only'
 
-import { and, eq, sql } from 'drizzle-orm'
-import { auth } from '@clerk/nextjs/server'
-import { db } from '@/db'
-import { cats, xactions } from '@/db/schema'
+import {and, eq, sql} from 'drizzle-orm'
+import {auth} from '@clerk/nextjs/server'
+import {db} from '@/db'
+import {cats, xactions} from '@/db/schema'
 
 export const getAnnualCashflow = async (year: number) => {
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return []

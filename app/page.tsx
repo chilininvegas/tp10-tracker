@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChartColumnBigIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { SignedIn, SignedOut, SignInButton, SignUpButton } from '@clerk/nextjs'
+import {ChartColumnBigIcon} from 'lucide-react'
+import {Button} from '@/components/ui/button'
+import {SignedIn, SignedOut, SignInButton, SignUpButton} from '@clerk/nextjs'
 
 const Home = () => {
   return (

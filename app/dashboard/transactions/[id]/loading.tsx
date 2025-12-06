@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import {Skeleton} from '@/components/ui/skeleton'
 
 // Loading component will be wrapped by the layout.tsx component
 const loading = () => {

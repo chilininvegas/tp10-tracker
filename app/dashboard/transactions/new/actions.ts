@@ -1,11 +1,11 @@
 // File contains one or more server actions
 'use server'
 
-import { z } from 'zod'
-import { db } from '@/db'
-import { xactions } from '@/db/schema'
-import { auth } from '@clerk/nextjs/server'
-import { addDays, subYears } from 'date-fns'
+import {z} from 'zod'
+import {db} from '@/db'
+import {xactions} from '@/db/schema'
+import {auth} from '@clerk/nextjs/server'
+import {addDays, subYears} from 'date-fns'
 
 const transactionSchema = z.object({
   transactionType: z.enum(['Income', 'Expense']),
@@ -32,7 +32,7 @@ export const createTransaction = async (data: {
   categoryId: number
 }) => {
   // Only authenticated users can create a transaction
-  const { userId } = await auth()
+  const {userId} = await auth()
 
   if (!userId) {
     return {

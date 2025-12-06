@@ -10,10 +10,10 @@ import {
   Tooltip,
   Legend
 } from 'recharts'
-import { ChartContainer } from '@/components/ui/chart'
+import {ChartContainer} from '@/components/ui/chart'
 import numeral from 'numeral'
-import { format } from 'date-fns'
-import { cn } from '@/lib/utils'
+import {format} from 'date-fns'
+import {cn} from '@/lib/utils'
 
 // Tooltips created by Sonneet 4.5 Thinking
 interface TooltipPayload {
@@ -31,7 +31,7 @@ interface CustomTooltipProps {
   payload?: TooltipPayload[]
 }
 
-const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
+const CustomTooltip = ({active, payload}: CustomTooltipProps) => {
   if (!active || !payload || !payload.length) return null
 
   const monthName = format(
@@ -65,7 +65,7 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 const CashflowChart = ({
   annualCashflow
 }: {
-  annualCashflow: { month: number; totalIncome: number; totalExpense: number }[]
+  annualCashflow: {month: number; totalIncome: number; totalExpense: number}[]
 }) => {
   // Calculate total income and expense
   const totalIncome = annualCashflow.reduce(
@@ -109,12 +109,12 @@ const CashflowChart = ({
           />
           <Tooltip
             content={<CustomTooltip />}
-            cursor={{ fill: 'rgba(0, 0, 0, 0.05)' }}
+            cursor={{fill: 'rgba(0, 0, 0, 0.05)'}}
           />
           <Legend
             verticalAlign='top'
             align='right'
-            wrapperStyle={{ paddingBottom: '20px' }}
+            wrapperStyle={{paddingBottom: '20px'}}
             iconType='circle'
             formatter={(value) => <span className='text-primary'>{value}</span>}
           />
