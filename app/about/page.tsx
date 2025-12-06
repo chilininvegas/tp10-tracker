@@ -45,13 +45,13 @@ const AboutPage = () => {
               </CardHeader>
               <CardContent className='space-y-3'>
                 <div>
-                  <Badge variant='secondary'>Next.js 16.0.5</Badge>
+                  <Badge variant='secondary'>Next.js 16.0.7</Badge>
                   <p className='text-sm text-muted-foreground mt-1'>
                     React framework with App Router and Server Components
                   </p>
                 </div>
                 <div>
-                  <Badge variant='secondary'>React 19.2.0</Badge>
+                  <Badge variant='secondary'>React 19.2.1</Badge>
                   <p className='text-sm text-muted-foreground mt-1'>
                     Modern UI library with latest features
                   </p>
